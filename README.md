@@ -216,3 +216,5 @@ Ok,这样binder就创建完成了,再次把代码放大到下面中
 				// 重新将abc-User对象的map添加到implicitModel中,此时implicitModel有两个map了,键值分别是abc和efg
 				implicitModel.putAll(binder.getBindingResult().getModel());
 ```
+
+
