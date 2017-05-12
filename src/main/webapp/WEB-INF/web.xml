@@ -3,9 +3,9 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
-
 	<!-- 
-		配置 org.springframework.web.filter.HiddenHttpMethodFilter: 可以把 POST 请求转为 DELETE 或 POST 请求 
+		配置 org.springframework.web.filter.HiddenHttpMethodFilter: 
+		可以把 POST 请求转为 DELETE 或 PUT 请求 
 	-->
 	<filter>
 		<filter-name>HiddenHttpMethodFilter</filter-name>
@@ -39,5 +39,4 @@
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
 </web-app>

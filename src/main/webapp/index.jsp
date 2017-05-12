@@ -5,63 +5,59 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="scripts/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#testJson").click(function() {
+			var url = this.href;
+			var args = {};
+			$.post(url, args, function(data) {
+				for (var i = 0; i < data.length; i++) {
+					var id = data[i].id;
+					var lastName = data[i].lastName;
+
+					alert(id + ": " + lastName);
+				}
+			});
+			return false;
+		});
+	})
+</script>
 </head>
 <body>
-
-	<!--  
-			模拟修改操作
-			1. 原始数据为: 1, Tom, 123456,tom@atguigu.com,12
-			2. 密码不能被修改.
-			3. 表单回显, 模拟操作直接在表单填写对应的属性值
+	
+	
+	<a href="mvc/testSimpleMappingExceptionResolver?id=10">Test SimpleMappingExceptionResolver</a>
+	<br><br>
+	<!-- 测试ResponseStatusExceptionResolver -->
+	<a href="mvc/testResponseStatusExceptionResolver?id=10">Test ResponseStatusExceptionResolver</a>
+	<br><br>
+	<!-- 测试异常处理 -->
+	<a href="mvc/testException?id=10">Test Exception</a>
+	<!-- 多文件上传 
+		1、配置MultipartResolver
+		2、 
 	-->
-	<form action="mvc/testModelAttribute" method="Post">
-		<input type="hidden" name="id" value="1"/>
-		username: <input type="text" name="username" value="Tom"/>
-		<br>
-		email: <input type="text" name="email" value="tom@atguigu.com"/>
-		<br>
-		age: <input type="text" name="age" value="12"/>
-		<br>
+	<form action="mvc/testManyFileUpload" method="POST" enctype="multipart/form-data">
+		文件1: <input type="file" name="myfiles"/>
+		文件2: <input type="file" name="myfiles"/>
 		<input type="submit" value="Submit"/>
 	</form>
+	
+	<!-- 单文件上传 
+		1、配置MultipartResolver
+		2、 
+	-->
+	<form action="mvc/testFileUpload" method="POST" enctype="multipart/form-data">
+		File: <input type="file" name="file"/>
+		Desc: <input type="text" name="desc"/>
+		<input type="submit" value="Submit"/>
+	</form>
+	
 	<br><br>
-
-<a href="mvc/testSessionAttributes">Session中传递数据</a><br><br>
-<a href="mvc/testModelAndView">ModelAndView传递数据</a><br><br>
-<a href="mvc/testMap">map传递数据</a>
-	<br>
-
-	<a href="mvc/testServlet">原生Servlet</a>
-	<br>
-
-	<form action="mvc/testPojo" method="post">
-		username: <input type="text" name="username" /> <br> password: <input
-			type="password" name="password" /> <br> email: <input
-			type="text" name="email" /> <br> age: <input type="text"
-			name="age" /> <br> city: <input type="text" name="address.city" />
-		<br> province: <input type="text" name="address.province" /> <br>
-		<input type="submit" value="Submit" />
-	</form>
+	<a href="mvc/testJson" id="testJson">Test Json</a>
 	<br>
 	<br>
-
-	<form action="mvc/testRest/1" method="post">
-		<input type="hidden" name="_method" value="PUT"> <input
-			type="submit" value="Rest PUT">
-	</form>
-	<br>
-	<br>
-	<form action="mvc/testRest/1" method="post">
-		<input type="hidden" name="_method" value="DELETE"> <input
-			type="submit" value="Rest DELETE">
-	</form>
-
-	<br>
-	<br>
-	<form action="mvc/testRest" method="POST">
-		<input type="submit" value="Rest POST">
-	</form>
-	<br>
-	<a href="mvc/testRest/1">Rest Get</a>
+	<a href="emps">Rest Get</a>
 </body>
 </html>
